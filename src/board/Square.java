@@ -57,9 +57,26 @@ public class Square extends Group {
 	public boolean hasPiece() {
 		return this.piece != null;
 	}
+	
+	public int getX() {
+		for (int i = 0; i < 8; i++) {
+			if (ChessBoard.all_squares.get(getY()).get(i) == this) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public int getY() {
+		for (int i = 0; i < 8; i++) {
+			if (ChessBoard.all_squares.get(i).contains(this)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
 	public Rectangle getBackground() {
 		return this.bg;
 	}
-
 }
