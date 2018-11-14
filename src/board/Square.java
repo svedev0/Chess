@@ -16,6 +16,7 @@ public class Square extends Group {
 	private Color originalColor;
 	private Piece piece;
 	public static Square active;
+	@SuppressWarnings("unused")
 	private int turnCounter = 1;
 	public static ArrayList<Square> moveMarked = new ArrayList<Square>();
 
@@ -26,71 +27,62 @@ public class Square extends Group {
 		
 		this.setOnMouseClicked(event -> {
 		
-			// EXEMPEL:
 			if (hasPiece()) {
 				makeActive();
 				
 				int row = row();
 				int col = col();
 				
-				if(this.piece instanceof Pawn){
-					if(this.piece.getColor() == Color.BLACK){
+				if (this.piece instanceof Pawn) {
+					if (this.piece.getColor() == Color.BLACK) {
 						ChessBoard.all_squares.get(row+1).get(col).moveMark();
 						ChessBoard.all_squares.get(row+2).get(col).moveMark();
 					}
-					else if(this.piece.getColor() == Color.WHITE){
+					else if (this.piece.getColor() == Color.WHITE) {
 						ChessBoard.all_squares.get(row-1).get(col).moveMark();
 						ChessBoard.all_squares.get(row-2).get(col).moveMark();
 					}
-
 				}
 			}
-			else{
-				if(active != null){	
-				
+			else {
+				if (active != null) {	
 				active.makeInactive();
 				}
-				
+				moveMark();
 			}
-			
-			
 		});
-
 	}
 	
 	private int col() {
 		for (int i = 0; i < ChessBoard.all_squares.size(); i++) {
-			if(ChessBoard.all_squares.get(i).contains(this)){
+			if (ChessBoard.all_squares.get(i).contains(this)) {
 				return ChessBoard.all_squares.get(i).indexOf(this);
 			}
 		}
 		return -1;
 	}
 
-	public int row(){
+	public int row() {
 		for (int i = 0; i < ChessBoard.all_squares.size(); i++) {
-			if(ChessBoard.all_squares.get(i).contains(this)){
+			if (ChessBoard.all_squares.get(i).contains(this)) {
 				return i;
 			}
 		}
 		return -1;
 	}
 	
-	public void moveMark(){
-		Circle cir = new Circle(SIZE/2, SIZE/2, SIZE/8);
+	public void moveMark() {
+		Circle cir = new Circle(SIZE/2, SIZE/2, SIZE/10, Color.GREEN);
 		this.getChildren().add(cir);
 		moveMarked.add(this);
 	}
 
 	private void makeActive() {
-		if(active != null){
+		if (active != null) {
 			active.makeInactive();
 		}
-		
 		active = this;
 		this.getBackground().setFill(Color.RED);
-		
-		
 	}
 
 	private void makeInactive() {
@@ -100,12 +92,10 @@ public class Square extends Group {
 		moveMarked.clear();
 		active = null;
 		this.getBackground().setFill(originalColor);
-		
 	}
 
 	private void removeMoveMark() {
 		this.getChildren().remove(1);
-		
 	}
 
 	public void addPiece(Piece p) {
@@ -120,6 +110,7 @@ public class Square extends Group {
 	public Rectangle getBackground() {
 		return this.bg;
 	}
+	
 	public Boolean turn(int i){
 		boolean whiteTurn = true;
 		if(i % 2 == 0){

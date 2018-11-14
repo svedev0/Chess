@@ -1,6 +1,5 @@
 package pieces;
 
-
 import board.Square;
 import javafx.scene.Group;
 import javafx.scene.image.Image;

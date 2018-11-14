@@ -2,7 +2,7 @@ package pieces;
 
 public interface Moveable {
 
-	void showMove();
+	void showMove(int x, int y);
 
 	void hideMove();
 

@@ -1,5 +1,6 @@
 package pieces;
 
+import board.ChessBoard;
 import javafx.scene.paint.Color;
 
 public class Pawn extends Piece {
@@ -10,17 +11,12 @@ public class Pawn extends Piece {
 	}
 
 	@Override
-	public void showMove() {
-		// TODO Auto-generated method stub
-		
+	public void showMove(int x, int y) {		
+		ChessBoard.getSquare(x, y - 1).moveMark();
 	}
 
 	@Override
 	public void hideMove() {
-		// TODO Auto-generated method stub
 		
-	}
-
-	
-	
+	}	
 }
