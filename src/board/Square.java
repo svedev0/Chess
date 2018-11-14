@@ -78,7 +78,10 @@ public class Square extends Group {
 	}
 
 	private void removeMoveMark() {
-		this.getChildren().remove(1);
+		for (Square square : marked) {
+			square.getChildren().remove(square.getChildren().size() -1);
+		}
+		marked.clear();
 	}
 
 	private void makeActive() {
@@ -90,10 +93,7 @@ public class Square extends Group {
 	}
 
 	private void makeInactive() {
-		for (Square square : marked) {
-			square.removeMoveMark();
-		}
-		marked.clear();
+		removeMoveMark();
 		active = null;
 		this.getBackground().setFill(originalColor);
 	}
