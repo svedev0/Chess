@@ -9,7 +9,6 @@ public class Pawn extends Piece {
 		super(c);
 	}
 
-	@Override
 	public void showMove(int x, int y) {
 		if (this.getColor() == Color.WHITE ) {
 			ChessBoard.getSquare(x, y + 1).moveMark();
@@ -21,7 +20,6 @@ public class Pawn extends Piece {
 		}
 	}
 
-	@Override
 	public void hideMove() {
 		
 	}	
