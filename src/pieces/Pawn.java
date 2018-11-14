@@ -4,12 +4,9 @@ import javafx.scene.paint.Color;
 
 public class Pawn extends Piece {
 
-	@SuppressWarnings("unused")
-	private boolean hasMoved;
 	
 	public Pawn(Color c) {
 		super(c);
-		hasMoved = false;
 	}
 
 	@Override
@@ -22,11 +19,6 @@ public class Pawn extends Piece {
 	public void hideMove() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void move() {
-		hasMoved = true;
 	}
 
 	

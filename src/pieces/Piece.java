@@ -28,5 +28,7 @@ public abstract class Piece extends Group implements Moveable{
 		// EMPTY BUT NOT FOR ROOK/KING/PAWN
 	}
 	
-
+	public Color getColor(){
+		return this.color;
+	}
 }
