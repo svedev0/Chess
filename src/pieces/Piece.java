@@ -6,9 +6,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public abstract class Piece extends Group implements Moveable{
+public abstract class Piece extends Group implements Moveable {
+
+	private Color color;
 
 	public Piece(Color c) {
+		
+		this.color = c;
 
 		String COLOR = "WHITE";
 		if (c == Color.BLACK) {
@@ -20,14 +24,13 @@ public abstract class Piece extends Group implements Moveable{
 		iv.setFitWidth(Square.SIZE);
 		iv.setFitHeight(Square.SIZE);
 		this.getChildren().add(iv);
+	}
+
+	public void move() {
 
 	}
 
-	public void move(){
-		// EMPTY BUT NOT FOR ROOK/KING/PAWN
-	}
-	
-	public Color getColor(){
+	public Color getColor() {
 		return this.color;
 	}
 }

@@ -18,7 +18,7 @@ public class Square extends Group {
 	public static Square active;
 	@SuppressWarnings("unused")
 	private int turnCounter = 1;
-	public static ArrayList<Square> moveMarked = new ArrayList<Square>();
+	public static ArrayList<Square> marked = new ArrayList<Square>();
 
 	public Square(Color c) {
 		originalColor = c;
@@ -72,9 +72,13 @@ public class Square extends Group {
 	}
 	
 	public void moveMark() {
-		Circle cir = new Circle(SIZE/2, SIZE/2, SIZE/10, Color.GREEN);
+		Circle cir = new Circle(SIZE/2, SIZE/2, SIZE/10, Color.YELLOW);
 		this.getChildren().add(cir);
-		moveMarked.add(this);
+		marked.add(this);
+	}
+
+	private void removeMoveMark() {
+		this.getChildren().remove(1);
 	}
 
 	private void makeActive() {
@@ -82,20 +86,16 @@ public class Square extends Group {
 			active.makeInactive();
 		}
 		active = this;
-		this.getBackground().setFill(Color.RED);
+		this.getBackground().setFill(Color.GREEN);
 	}
 
 	private void makeInactive() {
-		for (Square square : moveMarked) {
+		for (Square square : marked) {
 			square.removeMoveMark();
 		}
-		moveMarked.clear();
+		marked.clear();
 		active = null;
 		this.getBackground().setFill(originalColor);
-	}
-
-	private void removeMoveMark() {
-		this.getChildren().remove(1);
 	}
 
 	public void addPiece(Piece p) {
@@ -111,15 +111,13 @@ public class Square extends Group {
 		return this.bg;
 	}
 	
-	public Boolean turn(int i){
+	public Boolean turn(int i) {
 		boolean whiteTurn = true;
-		if(i % 2 == 0){
+		if (i % 2 == 0){
 			return whiteTurn = false;
 		}
-		else{
+		else {
 		return whiteTurn;
 		}
 	}
-	
-
 }
