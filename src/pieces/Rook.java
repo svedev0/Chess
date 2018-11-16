@@ -10,17 +10,12 @@ public class Rook extends Piece {
 	}
 
 	@Override
-	public void showMove() {
-		// TODO Auto-generated method stub
+	public void showMove(int x, int y) {
 		
 	}
 
 	@Override
 	public void hideMove() {
-		// TODO Auto-generated method stub
 		
 	}
-
-	
-	
 }

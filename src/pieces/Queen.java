@@ -10,7 +10,7 @@ public class Queen extends Piece {
 	}
 
 	@Override
-	public void showMove() {
+	public void showMove(int x, int y) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -24,62 +24,60 @@ public class Square extends Group {
 		originalColor = c;
 		bg = new Rectangle(SIZE, SIZE, c);
 		this.getChildren().add(bg);
-		
+
 		this.setOnMouseClicked(event -> {
-		
+
+			if (marked.contains(this)) {
+				Piece p = active.piece;
+				active.piece = null;
+				active.makeInactive();
+				this.addPiece(p);
+				p.move();
+				return;
+			}
+
 			if (hasPiece()) {
 				makeActive();
-				
+
 				int row = row();
 				int col = col();
-				
-				if (this.piece instanceof Pawn) {
-					if (this.piece.getColor() == Color.BLACK) {
-						ChessBoard.all_squares.get(row+1).get(col).moveMark();
-						ChessBoard.all_squares.get(row+2).get(col).moveMark();
-					}
-					else if (this.piece.getColor() == Color.WHITE) {
-						ChessBoard.all_squares.get(row-1).get(col).moveMark();
-						ChessBoard.all_squares.get(row-2).get(col).moveMark();
-					}
-				}
-			}
-			else {
-				if (active != null) {	
-				active.makeInactive();
+			} else {
+				if (active != null) {
+					active.makeInactive();
 				}
 				moveMark();
 			}
 		});
 	}
-	
+
 	private int col() {
-		for (int i = 0; i < ChessBoard.all_squares.size(); i++) {
-			if (ChessBoard.all_squares.get(i).contains(this)) {
-				return ChessBoard.all_squares.get(i).indexOf(this);
+		int y = row();
+		for (int i = 0; i < 8; i++) {
+			if (ChessBoard.all_squares.get(y).get(i) == this) {
+				return i;
 			}
 		}
 		return -1;
 	}
 
 	public int row() {
-		for (int i = 0; i < ChessBoard.all_squares.size(); i++) {
+		for (int i = 0; i < 8; i++) {
 			if (ChessBoard.all_squares.get(i).contains(this)) {
 				return i;
 			}
 		}
 		return -1;
 	}
-	
+
 	public void moveMark() {
-		Circle cir = new Circle(SIZE/2, SIZE/2, SIZE/10, Color.YELLOW);
+		Circle cir = new Circle(SIZE / 2, SIZE / 2, SIZE / 10, Color.YELLOW);
 		this.getChildren().add(cir);
 		marked.add(this);
 	}
 
 	private void removeMoveMark() {
 		for (Square square : marked) {
-			square.getChildren().remove(square.getChildren().size() -1);
+			square.getChildren().remove(square.getChildren().size() - 1);
 		}
 		marked.clear();
 	}
@@ -89,6 +87,7 @@ public class Square extends Group {
 			active.makeInactive();
 		}
 		active = this;
+		this.piece.showMove(row(), col());
 		this.getBackground().setFill(Color.GREEN);
 	}
 
@@ -110,14 +109,13 @@ public class Square extends Group {
 	public Rectangle getBackground() {
 		return this.bg;
 	}
-	
+
 	public Boolean turn(int i) {
 		boolean whiteTurn = true;
-		if (i % 2 == 0){
+		if (i % 2 == 0) {
 			return whiteTurn = false;
-		}
-		else {
-		return whiteTurn;
+		} else {
+			return whiteTurn;
 		}
 	}
 }
