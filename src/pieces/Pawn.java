@@ -13,7 +13,6 @@ public class Pawn extends Piece {
 	}
 
 	public void showMove(int x, int y) {
-		System.out.println(x + " " + y);
 		if (this.getColor() == Color.WHITE) {
 			Square s1 = ChessBoard.getSquare(x, y - 1);
 			if (!s1.hasPiece()) {
