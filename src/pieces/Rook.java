@@ -70,35 +70,6 @@ public class Rook extends Piece {
 				break;
 			}
 		}
-
-		// //Right
-		// for () {
-		// Square s1 = ChessBoard.getSquare(x, y);
-		// if (!s1.hasPiece()) {
-		// s1.moveMark();
-		// break;
-		// }
-		// }
-		//
-		// //Up
-		// for () {
-		// Square s1 = ChessBoard.getSquare(x, y);
-		// if (!s1.hasPiece()) {
-		// s1.moveMark();
-		// break;
-		// }
-		// }
-		//
-		// //Down
-		// for () {
-		// Square s1 = ChessBoard.getSquare(x, y);
-		// if (!s1.hasPiece()) {
-		// s1.moveMark();
-		// break;
-		// }
-		// }
-		// }
-		//
 	}
 
 	public void move() {
