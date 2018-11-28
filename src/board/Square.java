@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import pieces.Pawn;
 import pieces.Piece;
 
 public class Square extends Group {
@@ -39,7 +38,9 @@ public class Square extends Group {
 			if (hasPiece()) {
 				makeActive();
 
+				@SuppressWarnings("unused")
 				int row = row();
+				@SuppressWarnings("unused")
 				int col = col();
 			} else {
 				if (active != null) {
@@ -87,7 +88,7 @@ public class Square extends Group {
 			active.makeInactive();
 		}
 		active = this;
-		this.piece.showMove(row(), col());
+		this.piece.showMove(col(),row());
 		this.getBackground().setFill(Color.GREEN);
 	}
 
