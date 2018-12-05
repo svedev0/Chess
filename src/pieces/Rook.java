@@ -31,7 +31,7 @@ public class Rook extends Piece {
 
 		// Right
 		for (int i = 1; i < 8; i++) {
-			if (x + i  > 7) {
+			if (x + i > 7) {
 				break;
 			}
 			Square s1 = ChessBoard.getSquare(x + i, y);
@@ -56,10 +56,10 @@ public class Rook extends Piece {
 				break;
 			}
 		}
-		
+
 		// Down
 		for (int i = 1; i < 8; i++) {
-			if (y + i> 7) {
+			if (y + i > 7) {
 				break;
 			}
 			Square s1 = ChessBoard.getSquare(x, y + i);
