@@ -11,10 +11,10 @@ public class chess extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+
 		ChessBoard board = new ChessBoard();
-		Scene scene = new Scene(board,Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
-		
+		Scene scene = new Scene(board, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
+
 		primaryStage.getIcons().add(new Image("file:images/WHITE_KING.png"));
 		primaryStage.setTitle("Chess Game");
 		primaryStage.setResizable(false);

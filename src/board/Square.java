@@ -70,25 +70,22 @@ public class Square extends Group {
 		return -1;
 	}
 
-	
 	public void moveMark() {
 		Circle cir = new Circle(SIZE / 2, SIZE / 2, SIZE / 10, Color.YELLOW);
 		this.getChildren().add(cir);
 		marked.add(this);
 	}
-	
+
 	public void mark(Color c) {
-		if(!this.hasPiece()){
+		if (!this.hasPiece()) {
 			moveMark();
-		}
-		else{
-			if(this.piece.getColor() != c){
+		} else {
+			if (this.piece.getColor() != c) {
 				attackMark();
 			}
 		}
 	}
 
-	
 	public void attackMark() {
 		Circle cir = new Circle(SIZE / 2, SIZE / 2, SIZE / 10, Color.RED);
 		this.getChildren().add(cir);
@@ -107,7 +104,7 @@ public class Square extends Group {
 			active.makeInactive();
 		}
 		active = this;
-		this.piece.showMove(col(),row());
+		this.piece.showMove(col(), row());
 		this.getBackground().setFill(Color.GREEN);
 	}
 
@@ -118,7 +115,7 @@ public class Square extends Group {
 	}
 
 	public void addPiece(Piece p) {
-		if(hasPiece()){
+		if (hasPiece()) {
 			this.getChildren().remove(piece);
 		}
 		this.piece = p;

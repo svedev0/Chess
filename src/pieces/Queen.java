@@ -11,6 +11,7 @@ public class Queen extends Piece {
 	}
 
 	public void showMove(int x, int y) {
+		
 		// Left
 		for (int i = 1; i < 8; i++) {
 			if (x - i < 0) {

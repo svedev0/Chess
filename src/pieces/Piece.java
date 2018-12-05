@@ -11,7 +11,7 @@ public abstract class Piece extends Group implements Moveable {
 	private Color color;
 
 	public Piece(Color c) {
-		
+
 		this.color = c;
 
 		String COLOR = "WHITE";
