@@ -42,7 +42,7 @@ public class Bishop extends Piece {
 				
 		// Down Left
 			for (int i = 1; i < 8; i++) {
-				if (x - i < 0 || y - i < 0) {
+				if (x + i > 7 || y + i > 7) {
 					break;
 				}
 				Square s1 = ChessBoard.getSquare(x + i, y + i);
@@ -56,7 +56,7 @@ public class Bishop extends Piece {
 			
 		// Down Right
 			for (int i = 1; i < 8; i++) {
-				if (x + i > 7 || y - i < 0) {
+				if (x - i < 0 || y + i > 7) {
 					break;
 				}
 				Square s1 = ChessBoard.getSquare(x - i, y + i);
