@@ -3,6 +3,7 @@ package chess;
 import board.ChessBoard;
 import board.Square;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,31 +20,38 @@ public class chess extends Application {
 		launch();
 	}
 
-	@SuppressWarnings("unused")
 	public void start(Stage primaryStage) throws Exception {
 		
 		window = primaryStage;
 		
-		Label label1 = new Label("Chess Game");
-		Button startBtn = new Button("Start");
-		Button exitBtn = new Button("Exit");
+		Label gameName = new Label("Chess Game");
+		Button startButton = new Button("Start");
+		Button exitButton = new Button("Exit");
 		
-		startBtn.setOnAction(e -> window.setScene(gameScene));
-		exitBtn.setOnAction(e -> System.exit(0));
+		String style1 = "-fx-font-size: 3em;";
+		String style2 = "-fx-font-size: 1.7em;";
+
+		gameName.setStyle(style1);
+		startButton.setStyle(style2);
+		exitButton.setStyle(style2);
 		
-		VBox layout1 = new VBox(20);
+		VBox menuSceneLayout = new VBox(20);
+		menuSceneLayout.setAlignment(Pos.CENTER);
 		
-		layout1.getChildren().addAll(label1, startBtn, exitBtn);
+		menuSceneLayout.getChildren().addAll(gameName, startButton, exitButton);
 		
-		Scene menuScene = new Scene(layout1, 500, 500);
+		Scene menuScene = new Scene(menuSceneLayout, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
 
 		ChessBoard board = new ChessBoard();
-		Scene gameScene = new Scene(board, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
+		Scene gameScene = new Scene(board, Square.SIZE * 8, Square.SIZE * 8);
+		
+		startButton.setOnAction(e -> primaryStage.setScene(gameScene));
+		exitButton.setOnAction(e -> System.exit(0));
 
-		primaryStage.getIcons().add(new Image("file:/images/WHITE_KING.png"));
-		primaryStage.setTitle("Chess Game");
-		primaryStage.setResizable(false);
-		primaryStage.setScene(menuScene);
-		primaryStage.show();
+		window.getIcons().add(new Image("file:/images/WHITE_KING.png"));
+		window.setTitle("Chess Game");
+		window.setResizable(false);
+		window.setScene(menuScene);
+		window.show();
 	}
 }
