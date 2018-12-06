@@ -35,12 +35,12 @@ public class chess extends Application {
 		startButton.setStyle(style2);
 		exitButton.setStyle(style2);
 		
-		VBox menuSceneLayout = new VBox(20);
-		menuSceneLayout.setAlignment(Pos.CENTER);
+		VBox menuVBox = new VBox(40);
+		menuVBox.setAlignment(Pos.CENTER);
 		
-		menuSceneLayout.getChildren().addAll(gameName, startButton, exitButton);
+		menuVBox.getChildren().addAll(gameName, startButton, exitButton);
 		
-		Scene menuScene = new Scene(menuSceneLayout, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
+		Scene menuScene = new Scene(menuVBox, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
 
 		ChessBoard board = new ChessBoard();
 		Scene gameScene = new Scene(board, Square.SIZE * 8, Square.SIZE * 8);
