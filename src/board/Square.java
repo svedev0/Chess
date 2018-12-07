@@ -16,7 +16,7 @@ public class Square extends Group {
 	private Piece piece;
 	public static Square active;
 	@SuppressWarnings("unused")
-	private int turnCounter = 1;
+	private int turnCounter = 0;
 	public static ArrayList<Square> marked = new ArrayList<Square>();
 
 	public Square(Color c) {
@@ -34,10 +34,13 @@ public class Square extends Group {
 				p.move();
 				return;
 			}
+			
+			if (!hasPiece()) {
+				return;
+			}
 
 			if (hasPiece()) {
 				makeActive();
-
 				@SuppressWarnings("unused")
 				int row = row();
 				@SuppressWarnings("unused")
