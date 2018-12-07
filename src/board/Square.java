@@ -2,10 +2,12 @@ package board;
 
 import java.util.ArrayList;
 
+import chess.chess;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import pieces.King;
 import pieces.Piece;
 
 public class Square extends Group {
@@ -27,10 +29,13 @@ public class Square extends Group {
 
 			if (marked.contains(this)) {
 				Piece p = active.piece;
+				if (this.piece instanceof King){
+					chess.gameOver();
+				}
 				active.piece = null;
 				active.makeInactive();
 				turnCounter++;
-				System.out.println(turnCounter);
+				System.out.println("Turn #"+ turnCounter);
 				this.addPiece(p);
 				p.move();
 				return;
