@@ -43,7 +43,7 @@ public class Pawn extends Piece {
 
 		if (this.getColor() == Color.WHITE) {
 			Square diagonalSquareWhite = ChessBoard.getSquare(x + 1, y + 1);
-			if (diagonalSquareWhite.hasPiece()) {
+			if (diagonalSquareWhite.hasPiece() && this.getColor() == Color.WHITE) {
 				diagonalSquareWhite.attackMark();
 			}
 		} else {
