@@ -42,6 +42,19 @@ public class Pawn extends Piece {
 		}
 
 		if (this.getColor() == Color.WHITE) {
+			Square diagonalSquareWhite = ChessBoard.getSquare(x + 1, y + 1);
+			if (diagonalSquareWhite.hasPiece()) {
+				diagonalSquareWhite.attackMark();
+			}
+		} else {
+			Square diagonalSquareWhite = ChessBoard.getSquare(x - 1, y + 1);
+			if (diagonalSquareWhite.hasPiece()) {
+				diagonalSquareWhite.attackMark();
+			} else {
+				return;
+			}
+		}
+		if (this.getColor() != Color.WHITE) {
 			Square diagonalSquareWhite = ChessBoard.getSquare(x + 1, y - 1);
 			if (diagonalSquareWhite.hasPiece()) {
 				diagonalSquareWhite.attackMark();
@@ -52,20 +65,6 @@ public class Pawn extends Piece {
 				diagonalSquareWhite.attackMark();
 			} else {
 				return;
-			}
-
-			if (this.getColor() == Color.BLACK) {
-				Square diagonalSquareBlack = ChessBoard.getSquare(x - 1, y - 1);
-				if (diagonalSquareBlack.hasPiece()) {
-					diagonalSquareBlack.attackMark();
-				}
-			} else {
-				Square diagonalSquareBlack = ChessBoard.getSquare(x + 1, y - 1);
-				if (diagonalSquareBlack.hasPiece()) {
-					diagonalSquareBlack.attackMark();
-				} else {
-					return;
-				}
 			}
 		}
 	}
