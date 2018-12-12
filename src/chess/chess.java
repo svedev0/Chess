@@ -16,6 +16,10 @@ public class chess extends Application {
 
 	public static Stage window;
 	Scene menuScene, gameScene;
+	
+	private static Scene gameOverScreen;
+	private static Scene winScreen;	
+
 
 	public static void main(String[] args) {
 		launch();
@@ -62,7 +66,7 @@ public class chess extends Application {
 
 		winVBox.getChildren().add(win);
 
-		Scene winScreen = new Scene(winVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
+		winScreen = new Scene(winVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
 
 		startButton.setOnAction(e -> primaryStage.setScene(gameScene));
 		exitButton.setOnAction(e -> System.exit(0));
@@ -80,7 +84,7 @@ public class chess extends Application {
 
 		gameOverVBox.getChildren().add(gameOverLabel);
 
-		Scene gameOverScene = new Scene(gameOverVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
+		gameOverScreen = new Scene(gameOverVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
 
 		window.getIcons().add(new Image("file:/images/WHITE_KING.png"));
 		window.setTitle("Chess Game");
@@ -90,10 +94,10 @@ public class chess extends Application {
 	}
 
 	public static void gameOver() {
-		window.setScene(gameOverScene);
+		window.setScene(gameOverScreen);
 	}
 
 	public static void win() {
-		window.setScene(win);
+		window.setScene(winScreen);
 	}
 }

@@ -30,6 +30,9 @@ public class Square extends Group {
 			if (marked.contains(this)) {
 				Piece p = active.piece;
 				if (this.piece instanceof King){
+					if(this.piece.getColor() == Color.BLACK;){
+			
+		}
 					chess.gameOver();
 					System.out.println("Congratulations! You won in "+ Square.turnCounter + " turns!");
 					return;
