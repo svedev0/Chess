@@ -26,8 +26,7 @@ public class chess extends Application {
 
 		window = primaryStage;
 
-		// Menu
-		// -----------------------------------------------------------------------------
+		// Menu----------------------------------------------------------
 
 		Label gameName = new Label("Chess Game");
 		Button startButton = new Button("Start");
@@ -47,14 +46,12 @@ public class chess extends Application {
 
 		Scene menuScene = new Scene(menuVBox, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
 
-		// Game
-		// -----------------------------------------------------------------------------
+		// Game----------------------------------------------------------
 
 		ChessBoard board = new ChessBoard();
 		Scene gameScene = new Scene(board, Square.SIZE * 8, Square.SIZE * 8);
 
-		// Win
-		// -----------------------------------------------------------------------------
+		// Win----------------------------------------------------------
 
 		Label win = new Label("CONGRATULATIONS, YOU WIN!");
 
@@ -70,8 +67,7 @@ public class chess extends Application {
 		startButton.setOnAction(e -> primaryStage.setScene(gameScene));
 		exitButton.setOnAction(e -> System.exit(0));
 
-		// Game Over
-		// -----------------------------------------------------------------------------
+		// Game Over----------------------------------------------------------
 
 		Label gameOverLabel = new Label("GAME OVER");
 
