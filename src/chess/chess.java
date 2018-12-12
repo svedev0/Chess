@@ -26,8 +26,9 @@ public class chess extends Application {
 
 		window = primaryStage;
 
-		// Menu -----------------------------------------------------------------------------
-		
+		// Menu
+		// -----------------------------------------------------------------------------
+
 		Label gameName = new Label("Chess Game");
 		Button startButton = new Button("Start");
 		Button exitButton = new Button("Exit");
@@ -45,27 +46,45 @@ public class chess extends Application {
 		menuVBox.getChildren().addAll(gameName, startButton, exitButton);
 
 		Scene menuScene = new Scene(menuVBox, Square.SIZE * 8 - 10, Square.SIZE * 8 - 10);
-		
-		// Game -----------------------------------------------------------------------------
+
+		// Game
+		// -----------------------------------------------------------------------------
 
 		ChessBoard board = new ChessBoard();
 		Scene gameScene = new Scene(board, Square.SIZE * 8, Square.SIZE * 8);
-		
-		// Win -----------------------------------------------------------------------------
-			
+
+		// Win
+		// -----------------------------------------------------------------------------
+
 		Label win = new Label("CONGRATULATIONS, YOU WIN!");
-		
+
 		win.setStyle(style1);
-		
+
 		VBox winVBox = new VBox(40);
 		winVBox.setAlignment(Pos.CENTER);
-		
+
 		winVBox.getChildren().add(win);
-		
+
 		Scene winScreen = new Scene(winVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
 
 		startButton.setOnAction(e -> primaryStage.setScene(gameScene));
 		exitButton.setOnAction(e -> System.exit(0));
+
+		// Game Over
+		// -----------------------------------------------------------------------------
+
+		Label gameOverLabel = new Label("GAME OVER");
+
+		String style3 = "-fx-font-size: 3em;";
+
+		gameOverLabel.setStyle(style3);
+
+		VBox gameOverVBox = new VBox(40);
+		gameOverVBox.setAlignment(Pos.CENTER);
+
+		gameOverVBox.getChildren().add(gameOverLabel);
+
+		Scene gameOverScene = new Scene(gameOverVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
 
 		window.getIcons().add(new Image("file:/images/WHITE_KING.png"));
 		window.setTitle("Chess Game");
@@ -75,21 +94,10 @@ public class chess extends Application {
 	}
 
 	public static void gameOver() {
-		
-		Label gameOverLabel = new Label("GAME OVER");
-		
-		String style1 = "-fx-font-size: 3em;";
-		
-		gameOverLabel.setStyle(style1);
-		
-		VBox gameOverVBox = new VBox(40);
-		gameOverVBox.setAlignment(Pos.CENTER);
-		
-		gameOverVBox.getChildren().add(gameOverLabel);
-
-		
-		Scene gameOverScene = new Scene(gameOverVBox, Square.SIZE * 8, Square.SIZE * 8, Color.BLACK);
-	
 		window.setScene(gameOverScene);
+	}
+
+	public static void win() {
+		window.setScene(win);
 	}
 }

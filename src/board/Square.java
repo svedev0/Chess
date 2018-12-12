@@ -31,6 +31,8 @@ public class Square extends Group {
 				Piece p = active.piece;
 				if (this.piece instanceof King){
 					chess.gameOver();
+					System.out.println("Congratulations! You won in "+ Square.turnCounter + " turns!");
+					return;
 				}
 				active.piece = null;
 				active.makeInactive();
