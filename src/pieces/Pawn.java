@@ -41,32 +41,36 @@ public class Pawn extends Piece {
 			}
 		}
 
-		// Left Up
+		// White Left Up
 		if (this.getColor() == Color.WHITE) {
-			Square s3 = ChessBoard.getSquare(x + 1, y + 1);
+			Square s3 = ChessBoard.getSquare(x + 1, y - 1);
 			if (s3.hasPiece()) {
 				s3.attackMark();
-			}
-		} else {
-			Square s3 = ChessBoard.getSquare(x - 1, y + 1);
-			if (s3.hasPiece()) {
-				s3.attackMark();
-			} else {
-				return;
 			}
 		}
-		if (this.getColor() != Color.WHITE) {
-			Square s4 = ChessBoard.getSquare(x + 1, y - 1);
-			if (s4.hasPiece()) {
-				s4.attackMark();
-			}
+
+		// White Right Up
+		Square s3 = ChessBoard.getSquare(x - 1, y - 1);
+		if (s3.hasPiece()) {
+			s3.attackMark();
 		} else {
-			Square s4 = ChessBoard.getSquare(x - 1, y - 1);
+			return;
+		}
+
+		// Black Left Down
+		if (this.getColor() == Color.BLACK) {
+			Square s4 = ChessBoard.getSquare(x + 1, y + 1);
 			if (s4.hasPiece()) {
 				s4.attackMark();
-			} else {
-				return;
 			}
+		}
+
+		// Black Right Down
+		Square s4 = ChessBoard.getSquare(x - 1, y - 1);
+		if (s4.hasPiece()) {
+			s4.attackMark();
+		} else {
+			return;
 		}
 	}
 
