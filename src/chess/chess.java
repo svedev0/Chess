@@ -25,7 +25,6 @@ public class chess extends Application {
 		launch();
 	}
 
-	@SuppressWarnings("unused")
 	public void start(Stage primaryStage) throws Exception {
 
 		window = primaryStage;
