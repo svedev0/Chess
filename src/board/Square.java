@@ -30,14 +30,14 @@ public class Square extends Group {
 			if (marked.contains(this)) {
 				Piece p = active.piece;
 				if (this.piece instanceof King){
-					if (this.piece.getColor() == Color.BLACK){
-						chess.win();
-					}
-					if (this.piece.getColor() == Color.WHITE) {
+					if (this.piece.getColor() == Color.WHITE){
 						chess.gameOver();
+						System.out.println("GAME OVER");
 					}
-					chess.gameOver();
-					System.out.println("Congratulations! You won in "+ Square.turnCounter + " turns!");
+					if (this.piece.getColor() == Color.BLACK) {
+						chess.win();
+						System.out.println("Congratulations! You won in "+ Square.turnCounter + " turns!");
+					}
 					return;
 				}
 				active.piece = null;
