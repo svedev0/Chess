@@ -29,8 +29,8 @@ public class Square extends Group {
 
 			if (marked.contains(this)) {
 				Piece p = active.piece;
-				if (this.piece instanceof King){
-					if (this.piece.getColor() == Color.WHITE){
+				if (this.piece instanceof King) {
+					if (this.piece.getColor() == Color.WHITE) {
 						chess.gameOver();
 						System.out.println("GAME OVER");
 					}
