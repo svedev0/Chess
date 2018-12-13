@@ -72,7 +72,6 @@ public class Pawn extends Piece {
 				return;
 			}
 		}
-
 	}
 
 	public void move() {
