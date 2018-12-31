@@ -41,37 +41,45 @@ public class Pawn extends Piece {
 			}
 		}
 
-		// White Right Up
-		if (this.getColor() == Color.WHITE) {
-			Square s3 = ChessBoard.getSquare(x + 1, y - 1);
-			if (s3.hasPiece()) {
-				s3.attackMark();
+		if (x - 1 > 0 || y - 1 > 0 || x + 1 < 7 || y + 1 < 7) {
+			return;
+		} else {
+			// White Right Up
+			if (this.getColor() == Color.WHITE) {
+				Square s3 = ChessBoard.getSquare(x + 1, y - 1);
+				if (s3.hasPiece() && this.getColor() != Color.BLACK) {
+					s3.attackMark();
+				}
+
+				// White Left Up
+				Square s5 = ChessBoard.getSquare(x - 1, y - 1);
+				if (s5.hasPiece() && this.getColor() != Color.BLACK) {
+					s5.attackMark();
+				} else {
+					return;
+				}
 			}
 
-			// White Left Up
-			Square s5 = ChessBoard.getSquare(x - 1, y - 1);
-			if (s5.hasPiece()) {
-				s5.attackMark();
-			} else {
-				return;
-			}
-		}
+			// Black Right Down
+			if (this.getColor() == Color.BLACK) {
+				Square s4 = ChessBoard.getSquare(x + 1, y + 1);
+				if (s4.hasPiece() && this.getColor() != Color.WHITE) {
+					s4.attackMark();
+				}
 
-		// Black Right Down
-		if (this.getColor() == Color.BLACK) {
-			Square s4 = ChessBoard.getSquare(x + 1, y + 1);
-			if (s4.hasPiece()) {
-				s4.attackMark();
-			}
-			
-			// Black Left Down
-			Square s3 = ChessBoard.getSquare(x - 1, y + 1);
-			if (s3.hasPiece()) {
-				s3.attackMark();
-			} else {
-				return;
+				// Black Left Down
+				Square s3 = ChessBoard.getSquare(x - 1, y + 1);
+				if (s3.hasPiece() && this.getColor() != Color.WHITE) {
+					s3.attackMark();
+				} else {
+					return;
+				}
 			}
 		}
+	}
+	
+	public void changePawnToQueen() {
+		
 	}
 
 	public void move() {
